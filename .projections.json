@@ -1,0 +1,21 @@
+{
+  "*.html": {
+    "colorscheme": [
+      "onedark"
+    ]
+  },
+  "libs/*.py": {
+    "alternate": "tests/test_{}.py",
+    "type": "source"
+  },
+  "tests/test_*.py": {
+    "alternate": "libs/{}.py",
+    "type": "test"
+  },
+  "cli.py": {
+    "type": "main"
+  },
+  "lib/models/*.py": {
+    "type": "model"
+  }
+}
