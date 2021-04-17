@@ -1,0 +1,125 @@
+#+TITLE: Writing Technical Documentation using Emacs
+#+OPTIONS: num:nil
+#+SETUPFILE: setup.conf
+#+PROPERTY: header-args :mkdirp yes :dir ~/output
+#+EXPORT_FIle_NAME: ~/output/writing_tech_docs.html
+#+INCLUDE: code.inc
+#+CALL: init()
+#+STARTUP: inlineimages
+
+* Overview
+Let's write the documentation using org-mode.
+
+* Shell Code Block
+#+begin_src shell :exports both :results output  
+echo "Writing technical documentation using Emacs"
+echo "Today is `date`"
+ls -l
+#+End_src
+
+#+RESULTS[c785ed7425b5e7cca47c73a27c671b10f7128dc8]:
+#+begin_example
+Writing technical documentation using Emacs
+Today is Sat Apr 17 08:46:25 +08 2021
+total 24
+-rw-r--r--@ 1 mengwangk  staff  11771 Apr 17 08:46 writing_tech_docs.html
+#+end_example
+
+
+* Current Working Directory
+
+#+begin_src python :results output  exports: both
+import os
+print(os.getcwd());
+#+end_src
+
+#+RESULTS:
+#+begin_example
+/Users/mengwangk/output
+#+end_example
+
+
+* Evaluating Code Block
+
+Today is “call_today[:results raw]()” 
+
+Increment of 87 is "call_increment[:results raw](num=87)"
+
+#+NAME: hello
+#+begin_src python exports none :results output :var name=""
+print(f"hello {name}")
+#+end_src
+
+
+#+CALL: today()
+#+CALL: increment(167)
+#+CALL: hello("alpha2phi")
+
+#+begin_src python :noweb yes
+<<hello(name="alpha2phi")>>
+#+end_src
+
+#+RESULTS:
+
+* Reusable function
+#+NAME: init_block
+#+BEGIN_SRC python
+  PI=3.142
+  def some_function(r):
+    return 2 * PI * r
+#+END_SRC
+
+* Call the function on an integer
+#+BEGIN_SRC python :noweb yes :exports both
+  <<init_block>>
+  return some_function(888)
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+5580.192
+#+end_example
+
+* Session
+
+#+begin_src python :session mysession
+PI=3.14159
+#+end_src
+
+#+RESULTS:
+
+#+begin_src python :results output :session mysession
+print(PI)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+3.14159
+#+end_example
+
+* Diagram
+
+[[file+sys:~/output/flow.png][Flow]]
+
+#+begin_src plantuml :file flow.png :exports none :results none
+title Authentication Sequence
+
+Alice->Bob: Authentication Request
+note right of Bob: Bob thinks about it
+Bob->Alice: Authentication Response
+#+end_src
+
+
+* Python Mode
+
+Press C-C ' to go into Python mode
+
+#+begin_src python :results output raw exports: both
+import os
+print(os.getcwd())
+#+end_src
+
+#+RESULTS:
+/Users/mengwangk/output
+
+
