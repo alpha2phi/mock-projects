@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Run",
+            "type": "node",
+            "runtimeExecutable": "nodemon",
+            "runtimeArgs": [
+                "--exec", "python", "${file}"
+            ],
+            "request": "launch",
+            "console": "integratedTerminal"
+        }
+    ]
+}

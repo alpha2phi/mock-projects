@@ -1,7 +1,7 @@
 from lib import func1, func2
 
-print("Main app...")
+print("Calling main app...")
 
-print("Calling library function...")
+print("Callings library function...")
 func1()
 func2()
