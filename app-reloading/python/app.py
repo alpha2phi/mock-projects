@@ -6,7 +6,7 @@ str = "hello alpha2phi"
 
 print("Calling main app...")
 
-print("Callings library function...")
+print("Calling library function...")
 func1()
 func2()
 
