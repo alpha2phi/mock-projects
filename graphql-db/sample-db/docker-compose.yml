@@ -30,3 +30,9 @@ services:
 
 volumes:
   pgsql-data:
+
+networks: 
+  default: 
+    external: 
+      name: my-network
+
