@@ -3,17 +3,26 @@ services:
   pgsql:
     image: postgres
     restart: always
-    env_file:
-      - .env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PORT: 5432
     volumes:
       - pgsql-data:/tmp/postgresql/data
-      - ./init-pgsql.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./insert.sql:/docker-entrypoint-initdb.d/insert.sql
     ports:
       - "5432:5432"
   adminer:
     image: adminer
-    restart: always
+    depends_on: 
+      - pgsql
+    environment:
+      ADMINER_DEFAULT_DB_DRIVER: pgsql
+      ADMINER_DEFAULT_DB_HOST: postgres
+      ADMINER_DEFAULT_DB_NAME: postgres
     ports:
-      - 8080:8080
+      - 8081:8080
 volumes:
   pgsql-data:
