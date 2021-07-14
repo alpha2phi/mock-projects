@@ -1,5 +1,7 @@
 version: '3'
 services:
+
+  ## ------------ Sample database -----------------------
   pgsql:
     image: postgres
     restart: always
@@ -24,5 +26,7 @@ services:
       ADMINER_DEFAULT_DB_NAME: postgres
     ports:
       - 8081:8080
+  ## ------------ Sample database -----------------------
+
 volumes:
   pgsql-data:
